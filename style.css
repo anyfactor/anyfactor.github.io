@@ -1,9 +1,10 @@
-*{
+html{
   background-color: #15232d;
-  color: #c4c4c6;
 }
+
 body {
   margin: 8%;
+  color: #c4c4c6;
 }
 #contact {
   margin: 8%;
@@ -43,6 +44,7 @@ mark {
   background-color: rgb(7, 189, 245);
   color: Black;
 }
+
 h1{
   color: #FF9D00;
 }
