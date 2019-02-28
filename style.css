@@ -1,7 +1,9 @@
-body {
-  margin: 8%;
+*{
   background-color: #15232d;
   color: #c4c4c6;
+}
+body {
+  margin: 8%;
 }
 #contact {
   margin: 8%;
