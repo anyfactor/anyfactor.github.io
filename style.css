@@ -1,0 +1,55 @@
+body {
+  margin: 8%;
+  background-color: #15232d;
+  color: #c4c4c6;
+}
+#contact {
+  margin: 8%;
+  font-weight: 900;
+  text-align: center;
+  font-size: 1.3rem;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #9effff;
+}
+
+a:visited {
+  color: #738ca6;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #04286b;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  background: #04286b;
+}
+
+a:active {
+  background: #265301;
+  color: #04286b;
+}
+mark {
+  background-color: rgb(7, 189, 245);
+  color: Black;
+}
+h1{
+  color: #FF9D00;
+}
+h2{
+  color:  #ffc600;
+}
+h3{
+  color:  #ffe483;
+}
+h4{
+  color:  #f3e5b1;
+}
