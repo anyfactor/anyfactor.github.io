@@ -1,10 +1,12 @@
-html{
+html, body{
+  margin: 0;
+  padding: 0;
   background-color: #15232d;
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 8%;
+.main {
+  margin: 1% 8%;
   color: #c4c4c6;
 }
 #contact {
