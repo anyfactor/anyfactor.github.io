@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anyfactor | Portfolio</title>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid white;
+            float: left;
+            width: 180px;
+        }
+
+        div.gallery:hover {
+            border: 1px solid Red;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        
+    <small>Site unfinished. Work in Progress...</small>
+    <h1 id="home"><a href="https://www.anyfactor.xyz">Anyfactor</a></h1>
+    <h2>Automator, Developer, and Accountant</h2>
+  </div>
+    </div>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="https://www.anyfactor.xyz">Home</a>
+            <a href="">Services & Rates</a>
+            <a href="#">Social Media</a>
+            <a href="portfolio.html" target="_blank">Portfolio</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    
+    <ul class="navbar">
+        <li><a class="active" href="javascript:void(0)" style="font-size:15px;cursor:pointer" class="closebtn"
+                onclick="openNav()">&#9776;</a></li>
+        <li><a href="#webscraping">Web Scraping</a></li>
+        <li><a href="#dataanalytics">Data Analytics</a></li>
+        <li><a href="#yotube">Youtube</a></li>
+    </ul>
+
+    <div class="main">
+        <h2 id="webscraping">Web Scraping and Browser Automation</h2>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/1.jpg">
+                <img src="portfolio/1.jpg"
+                    alt="Finding active goodread users and scraping various information from each of the users’ libary"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Finding active goodread users and scraping various information from each of the users’
+                libary</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/2.jpg">
+                <img src="portfolio/2.jpg"
+                    alt="Scraping online directory for website, email, and contact information of Danish woodworking companies"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Scraping online directory for website, email, and contact information of Danish
+                woodworking companies</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/3.jpg">
+                <img src="portfolio/3.jpg" alt="Latitude and longitude scraped of 5000 institutes" width="600"
+                    height="400">
+            </a>
+            <div class="desc">Latitude and longitude scraped of 5000 institutes</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/4.jpg">
+                <img src="portfolio/4.jpg" alt="Wikipedia sidebar information scraped for 200 educational institutes"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Wikipedia sidebar information scraped for 200 educational institutes</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/5.jpg">
+                <img src="portfolio/5.jpg" alt="Bulk specific lawsuit directory scrape for specific information"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Bulk specific lawsuit directory scrape for specific information</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/6.jpg">
+                <img src="portfolio/6.jpg"
+                    alt="Ecommerce site scrape: 2,500 popular search term generation and associated review and other information"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Ecommerce site scrape: 2,500 popular search term generation and associated review and
+                other information</div>
+        </div>
+        <div class="gallery">
+            <a target="_blank" href="portfolio/7.jpg">
+                <img src="portfolio/7.jpg"
+                    alt="Over 20,000 product URLs scraped from an ecommerce site, and  displayed and non-displayed information scraped from each individual URL"
+                    width="600" height="400">
+            </a>
+            <div class="desc">Over 20,000 product URLs scraped from an ecommerce site, and displayed and non-displayed
+                information scraped from each individual URL</div>
+        </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+</body>
+
+</html>
