@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anyfactor | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header and main nav Begins -->
+    <div class="main">
+
+        <small>Site unfinished. Work in Progress...</small>
+        <h1 id="home"><a href="https://www.anyfactor.xyz">Anyfactor</a></h1>
+        <h2>Automator, Developer, and Accountant</h2>
+        <h5 style="text-align:center">
+            <mark>
+                Currently looking for opportunities in remote junior level position or
+                paid apprenticeship. Visit my <a href="hiring.html">Services and Rates page</a>. and Feel free to send
+                me an
+                <a href="mailto:anyfactor@gmail.com?Subject=From%20Your%20Portfolio%20Site" target="_top">Electronic
+                    Mail.</a></mark>
+        </h5>
+    </div>
+    </div>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="https://www.anyfactor.xyz">Home</a>
+            <a href="hiring.html" style="color:red">Hire Me!</a>
+            <a href="portfolio.html" target="_blank">Portfolio</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+    </div>
+
+    <!-- Header and main nav Ends -->
+
+
+    <!-- Individual Page  Navbar Begins-->
+
+    <ul class="navbar">
+        <li><a class="active" href="javascript:void(0)" style="font-size:15px;cursor:pointer" class="closebtn"
+                onclick="openNav()">&#9776;</a></li>
+        <li><a href="#case1">Medical Service</a></li>
+        <li><a href="#case2">Programming Tutoring Service</a></li>
+    </ul>
+
+    <!-- Individual Page Navbar ends -->
+
+    <!-- Main content Begins-->
+    <div class="main">
+
+        <div id="case1">
+            <h1>
+                Case Study: Vein & Plastic Surgery Professional Service
+            </h1>
+
+            <h2>Goals</h2>
+            <ul>
+                <li>Customer Acquisation</li>
+                <li>Educate Professional</li>
+                <li>Maintain Social Presence</li>
+                <li>Respond to professionals and potential clients</li>
+            </ul>
+
+            <h2>Challenges</h2>
+
+            <ul>
+                <li>Very Niche Sector</li>
+                <li>Corrosive / NSFW Medical Content</li>
+                <li>Education of Clients and Services</li>
+            </ul>
+
+            <h2>
+                Evaluation
+            </h2>
+
+            <p>
+                My goal was to promote not only the services of the clinic but also educate inquiries made by
+                professionals
+                and handle communications.
+            </p>
+
+            <p>I identified the most crucial challenge and potential developement point very early one. The before and
+                after
+                treatment pictures. But the catch was the before pictures are <em>quite gnarly</em> to put in simple
+                terms.
+            </p>
+
+            <p>Client has told me that the patients are suffering from a <em>stage 6 disease</em> and it is normal to
+                them.
+                But for the average person it is everything but normal.</p>
+
+            <p>The client threw me the challenge to make the page seem like approachable for clients and layperson and
+                be educational for the medical professionals.</p>
+
+            <h2>Solution</h2>
+
+            <h3>Caution Post with Album</h3>
+
+            <p>This system allowed me to provide information of services with the before and after pictures by
+                <em>softening the blow</em> a little bit and triggering a curiosity. I used the album feature of
+                instagram to create a four picture information delivery mechanism. The technique and the description is
+                the following - </p>
+
+            <h4>First Picture: Desensitize and Entice</h4>
+
+            <p>In the first picture I maintained the two step rule: Desensitize and Entice</p>
+
+            <img src="./Cases/vein/1.png" class="case_img">
+
+            <p><strong>Desensitize:</strong> don't want to in lack of a better word <em>disgust</em> people when they
+                are scrolling past the feed. So, the first step for me was to blur the before picture.</p>
+
+            <p><strong>Entice:</strong> As the picture itself is blurred out, I entice curiosity by letting viewers know
+                what the album is about. And I more or less guide them to follow with my brightly colored text.</p>
+
+            <h4>Second Picture: Before Picture</h4>
+
+            <p><em>I have blurred out the before picture</em> but in the post original picture will be posted.</p>
+            
+            <img src="./Cases/vein/2.png" class="case_img">
+            <p>I will use red obvious highlighter to to mark the vein deformity.</p>
+
+            <p>(Not shown in picture) Use stickers to guide to see the after treatment pictures.</p>
+
+            <h4>Third Picture: After Treatment Picture</h4>
+
+            <p><em>Blurred out but in original it will be posted as is.</em></p>
+
+            <img src="./Cases/vein/3.png" alt="" class="case_img">
+
+            <p>Stickers will be used for both - </p>
+
+            <ul><li>
+                To go back see the before picture
+            </li>
+            <li>And to contact the clinic for appointment</li></ul>
+
+            <h4>Fourth & Final Picture: Contact Information</h4>
+
+            <img src="./Cases/vein/4.png" alt="" class="case_img">
+
+            <p>In an obvious way show the contact and address. And option for DM for appointment (falls under my duties).</p>
+        </div>
+
+        <div id="case2">
+            <h1>Case Study: Programming Youtube Channel</h1>
+        </div>
+
+        
+    </div>
+
+    <!-- Main content ends -->
+    <div class="contact" id="contact">
+        <p id="contact">
+
+            I am currently free for work. To hire me, checkout my <a href="hiring.html">Services and Rates</a>.
+            <br> For inquiries send me an <a href="mailto:anyfactor@gmail.com">email</a> </p>
+    </div>
+
+    <!-- JS funcanalities of Main nav Begins -->
+
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+
+    <!-- JS functionalities of Main nav Ends-->
+
+</body>
+
+</html>
