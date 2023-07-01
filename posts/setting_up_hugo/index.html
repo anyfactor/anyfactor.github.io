@@ -111,16 +111,16 @@
 <ol>
 <li>Create two repository:
 <ol>
-<li>One for our Hugo Files, your development repo, we will be calling this the <strong>dev repo</strong></li>
-<li>Another for oyur deployed files, your production repo: <code>&lt;name_of_the_site&gt;.github.io</code>, we will be calling this the <strong>prod repo</strong></li>
+<li>One for our Hugo code, your development repo, we will be calling this the <strong>dev repo</strong></li>
+<li>Another for the deployed static rendered webpages, the production repo: <code>&lt;name_of_the_site&gt;.github.io</code>, we will be calling this the <strong>prod repo</strong></li>
 </ol>
 </li>
 </ol>
 <h2 id="hugo-stuff">Hugo Stuff</h2>
 <ol>
 <li>I will be installing Hugo in Windows 10, using chocolatey: <code>choco install hugo-extended</code></li>
-<li><code>clone</code> the <code>dev repo</code> and <code>cd</code> into that</li>
-<li>Create the hugo site here with <code>hugo new site &lt;name_of_the_site&gt;</code> [0]</li>
+<li><code>clone</code> the <strong>dev repo</strong> and <code>cd</code> into that</li>
+<li>Create the hugo site there with <code>hugo new site &lt;name_of_the_site&gt;</code> [0]</li>
 <li><code>cd</code> into the newly created <code>&lt;name_of_the_site&gt;</code> directory</li>
 <li>Selecting a theme
 <ol>
@@ -135,28 +135,28 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Anyfactor&#39;s blog&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;fuji&#34;</span>
 </span></span></code></pre></div><blockquote>
-<p>I am using the <code>fuji</code> theme</p>
+<p>I am using the <a href="https://github.dsrkafuu.net/hugo-theme-fuji/" target="_blank">fuji theme</a></p>
 </blockquote>
 <ol start="7">
 <li>Development preview: <code>hugo server</code></li>
-<li>Creating a new post: <code>hugo new posts/&lt;name_of_post&gt;md</code></li>
-<li>Edit the markdown blog post. Remove <code>draft: true</code> from the metadata section.</li>
+<li>Creating a new post: <code>hugo new posts/&lt;name_of_post&gt;.md</code></li>
+<li>Edit the markdown blog post. Remove <code>draft: true</code> from the metadata section. Add the tags and description metadata.</li>
 </ol>
 <h2 id="deployment">Deployment</h2>
 <ol>
 <li>Adding the production site repo:
 <ol>
-<li>Have atleast one commit on the <code>prod repo</code> for further future commits. You can clone the repo, run <code>touch README.md</code> and push the main branch.</li>
-<li>On the <code>dev repo</code> add the <code>prod repo</code> as a submodule: <code>git submodule add -b main &lt;prod_repo_url&gt; public</code> [2]</li>
-<li>The above command will bring the <code>main</code> branch of the <code>prod_repo</code> to the <code>public</code> directory</li>
-<li>The <code>public</code> directory will contain the rendedred static webpages</li>
-<li>When you render the static webpages the <code>prod_repo</code> contents will be overwritten</li>
-<li>Then you can push rendered static webpages to the web</li>
+<li>Have atleast one commit on the <strong>prod repo</strong> for further future commits. You can clone the repo, run <code>touch README.md</code> and push the main branch.</li>
+<li>On the <strong>dev repo</strong> add the <strong>prod repo</strong> as a submodule: <code>git submodule add -b main &lt;prod_repo_url&gt; public</code>. [2]</li>
+<li>The above command will bring the <code>main</code> branch of the <strong>prod_repo</strong> to the <code>public</code> directory</li>
+<li>The <code>public</code> directory will contain the rendedred static webpages.</li>
+<li>When you render the static webpages the <strong>prod_repo</strong> contents will be written.</li>
+<li>Then you can push rendered static webpages to the web.</li>
 </ol>
 </li>
-<li>To generate the static files into the public directory: <code>hugo -t fuji</code></li>
-<li>Git <code>add</code> → <code>commit</code> → <code>push</code> the <code>dev repo</code></li>
-<li><code>cd</code> into the <code>public</code> directory where <code>prod repo</code> website lives. Git <code>add</code> → <code>commit</code> → <code>push</code> to publish the new site.</li>
+<li>To generate the static files into the public directory: <code>hugo -t fuji</code>. <code>-t</code> stands for <code>theme</code>.</li>
+<li><code>cd</code> into the <code>public</code> directory where <strong>prod repo</strong> website lives. Git <code>add</code> → <code>commit</code> → <code>push</code> to publish the new site.</li>
+<li><code>cd</code> back into the previous (/root) directory. Git <code>add</code> → <code>commit</code> → <code>push</code> the <strong>dev repo</strong>.</li>
 </ol>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -165,10 +165,9 @@
 
 <h2 id="notes">Notes</h2>
 <blockquote>
-<p>[0] Proper git setup</p>
+<p>[0] Create site first then add git</p>
 </blockquote>
-<p>It would be nice to create the site first, then cding then setting up the git repo.</p>
-<p><code>hugo new site anyfactor_hugo_blog</code></p>
+<p>Create the site first, then inti the git repo there.</p>
 <blockquote>
 <p>[1] Installing <a href="https://themes.gohugo.io/themes/hugo-theme-fuji/" target="_blank">Fuji</a> Theme [<a href="https://github.com/dsrkafuu/hugo-theme-fuji" target="_blank">Repo</a>]</p>
 </blockquote>
@@ -185,12 +184,6 @@ tags: [&#39;hugo&#39;]
 <p>[2] <code>master</code> vs <code>main</code></p>
 </blockquote>
 <p>I need to declare the <code>master</code> branch here as my prod repo is older.</p>
-<h2 id="next-up">Next up</h2>
-<ul>
-<li>Writing a <code>powershell</code> script to run the publish commands in sequence</li>
-<li>Completing the site setup and adding content</li>
-<li>Figure out SEO stuff: <a href="https://www.skcript.com/svr/perfect-seo-meta-tags-with-hugo" target="_blank">Perfect SEO Meta Tags with Hugo</a></li>
-</ul>
     </div>
 </article>
 
@@ -219,6 +212,10 @@ tags: [&#39;hugo&#39;]
         <div>
             
             <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
                 <a href="/tags/hugo/">hugo</a>
             </span>
             
@@ -231,7 +228,6 @@ tags: [&#39;hugo&#39;]
     <li><a href="#hugo-stuff">Hugo Stuff</a></li>
     <li><a href="#deployment">Deployment</a></li>
     <li><a href="#notes">Notes</a></li>
-    <li><a href="#next-up">Next up</a></li>
   </ul>
 </nav></div>
 </aside>
@@ -268,6 +264,10 @@ tags: [&#39;hugo&#39;]
     <div class="sidebar-item sidebar-tags">
         <h3>Tags</h3>
         <div>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
             
             <span>
                 <a href="/tags/hugo/">hugo</a>
