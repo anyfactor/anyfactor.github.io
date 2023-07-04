@@ -6,14 +6,35 @@
     <description>Recent content on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jul 2023 02:13:59 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jul 2023 23:12:53 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Business programming hybrid roles</title>
+      <link>https://anyfactor.github.io/posts/business_programming_hybrid/</link>
+      <pubDate>Tue, 04 Jul 2023 23:12:53 +0600</pubDate>
+      
+      <guid>https://anyfactor.github.io/posts/business_programming_hybrid/</guid>
+      <description>&lt;p&gt;Any role that has a direct business goal that doesn&amp;rsquo;t involve full time programming to build the product.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>From zero to `deno compile` then back to zero</title>
       <link>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</link>
       <pubDate>Tue, 04 Jul 2023 02:13:59 +0600</pubDate>
       
       <guid>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</guid>
-      <description>&lt;p&gt;Do I still hate Javascript? And yes, Deno is still Javascript don&amp;rsquo;t let anyone full ya.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Do I still hate Javascript? And yes, Deno is still Javascript don&amp;rsquo;t let anyone fool ya.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Anyfactor - Developer first product/solutions dude</title>
+      <link>https://anyfactor.github.io/about/</link>
+      <pubDate>Mon, 03 Jul 2023 19:15:32 +0800</pubDate>
+      
+      <guid>https://anyfactor.github.io/about/</guid>
+      <description>I am a DevRel at a data company. I am very happy with my full time job.
+&amp;hellip;but I moonlight as a freelance Python developer specializing in product and feature development that focuses on data, automation and API development.
+I am a self taught programmer. I started freelancing in 2016 with a focus in automation developement in Python (web scraping and workflow/process automation). Then I slowly moved in product and feature developement/hacking with focus on data engineering.
+I love to solve problems with programming. I enjoy programming and I am great at at explaining technical things in layperson terms. I spend my weekends programming either for clients or for myself.</description>
     </item>
     
     <item>
