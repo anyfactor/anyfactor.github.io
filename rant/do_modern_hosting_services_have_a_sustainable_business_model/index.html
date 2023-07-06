@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.115.0">
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Do modern hosting services have a sustainable business model? - Anyfactor&#39;s blog</title>
+
+
+<meta name="author" content="Anyfactor" />
+
+
+
+<meta name="keywords" content="rant" />
+
+
+<meta property="og:title" content="Do modern hosting services have a sustainable business model?" />
+<meta name="twitter:title" content="Do modern hosting services have a sustainable business model?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anyfactor.github.io/rant/do_modern_hosting_services_have_a_sustainable_business_model/" /><meta property="og:description" content="There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why there are free hosting services?" />
+<meta name="twitter:description" content="There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why there are free hosting services?" /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2023-07-02T14:28:13+06:00" /><meta property="article:modified_time" content="2023-07-02T14:28:13+06:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://anyfactor.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+<script data-goatcounter="https://kjm2vyyxuufb.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://anyfactor.github.io/">Anyfactor&#39;s blog</a>
+            
+            <span class="title-sub">Data &#43; Product &#43; Solution</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://anyfactor.github.io/rant/do_modern_hosting_services_have_a_sustainable_business_model/">Do modern hosting services have a sustainable business model?</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-07-02</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;912 words</span>
+<span><i class="iconfont icon-time-sharp"></i>&nbsp;5 minutes</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/rant">rant</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why there are free hosting services?</p>
+<h2 id="the-impact-of-heroku">The impact of Heroku</h2>
+<p>The hacker (as in indie hacker) community was shocked when Heroku closed down their free hosting tier. Heroku had essentially acted as the backbone for all MVPs and bootstrapped projects on the internet. It truly was a fascinating platform. Although it was never seen as a scalable platform, Heroku helped take out the hassles of deployments. You probably wouldn&rsquo;t build a 6-digit MRR SaaS platform on top of Heroku, but Heroku was there to get you to that point. The love for Heroku is palpable in the IndieHacking community.</p>
+<p>Most people blamed Salesforce when they heard that Heroku was going to shut down the free tier. But it doesn&rsquo;t feel like it was unexpected. Heroku offered 3 serverless computation projects with only an email-based signup. The CC was required only when you wanted to use the Postgres DB or anything from the marketplace. How is that sustainable?</p>
+<h2 id="software-business-does-not-have-zero-marginal-variable-cost">Software business does not have zero marginal variable cost</h2>
+<p>Nothing is free. Even in a software business where the distribution of software theoretically has zero dollars in marginal costs in production, there are bandwidth, infrastructure costs, and business costs. Moreover, there is the KPI-driven ambition cost that comes with the number of free account signups (I will talk about this in another rant). Also economies of scale works both ways, you need downsize when the production goes down. Even at the cent level, there is something. It is in no way practical to have an infinitely bidrectional scalable software company.</p>
+<p>I honestly don&rsquo;t think modern feature-pursuing software companies fit the bill of theoretical software companies with infinite economies of scale. The number of things that break due to scaling is absurd. And things breaking directly affect the reputation and the bottom line of a company. No product on the market is unique; everyone has competitors. For the average company, the moat is essentially their reputation.</p>
+<h2 id="hosting-companies-are-not-even-software-companies">Hosting companies are not even software companies</h2>
+<p>I understand the &ldquo;reputational&rdquo; aspect of growing a business. As I just described, reputation is essentially a moat. However, modern &ldquo;deploy from containers&rdquo; hosting services don&rsquo;t have any barriers to switching. You have a container and a YAML file, and you can easily move to the next competitor. Nothing is holding individuals from migrating to another competitor or, God forbid, paying money to that competitor! But you can&rsquo;t make migration policies harder through fine print in policy terms or in engineering terms. Engineers are a different breed, and they won&rsquo;t accept that (another rant).</p>
+<p>But that is even true for &ldquo;software&rdquo; companies. Hosting companies themselves represent &ldquo;hardware&rdquo; companies because the value proposition is based on their &ldquo;servers&rdquo;. Replicating software business theory doesn&rsquo;t make sense because there is something tangible associated with every user they onboard. Don&rsquo;t you think some PM in a hosting company came across this issue that essentially says, &ldquo;We need more servers because of the free account sign-ups&rdquo;? The PM will smooth out the edges and communicate that to the director or C-suite in a way that doesn&rsquo;t sound negative. Maybe they will phrase this situation in the classic &ldquo;For a growing company, costs like this are good.&rdquo;</p>
+<h2 id="who-pays-for-the-free-accounts">Who pays for the free accounts</h2>
+<p>So, how do modern hosting companies make money? They probably don&rsquo;t. You&rsquo;ll see. Even though they might offer a free account now, they might even ask for a credit card. Even with that it is simply not sustainable. Because a free account costs money. And if you ask how much money it costs, they have to justify that to the other paying customers, because in a normally functioning business, the paying customers are paying for the free customers. That is called <a href="https://en.wikipedia.org/wiki/Free-rider_problem" target="_blank">Free Rider Problem</a>.</p>
+<p>No rational customer would accept that. So, who is paying for these free accounts? VCs and investors. And there is a problem at that point. Even though you can convince a handful of paying customers of the idea of community and sharing their bounty, VCs are capitalists in nature. At some point, they need their money, and they consider these costs as investments. They think maybe it builds a moat or something. But does it truly? At a certain point, someone is going to go through the accounting book and pull the plug. That is how things work.</p>
+<p>Modern hosting services, no matter how much innovation they are doing in terms of software, are paying for something. They have significant and attachable costs to every account that signs up. Moreover, as they grow, their spam control systems diminish. So, the barrage of free accounts does not justify the cost of having a free account. Even though there is a free lunch and all, there is no free lunch with modern hosting services that do deployments from containers. Customers are not bound to a modern hosting service.</p>
+<h2 id="you-cant-grow-a-hosting-business-without-free-accounts">You can&rsquo;t grow a hosting business without free accounts</h2>
+<p>At the end of the day, <strong>is it possible to have free accounts somehow?</strong> The industry demands free accounts. That is the culture. Hosting companies need to focus on cost minimization engineering more than featuring engineering. In this industry customers are willing to pay extra to have something stable and companies need to create solutions that can help them keep their cost per customer low.</p>
+<blockquote>
+<p>This rant applies to AI companies as well.</p>
+</blockquote>
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-impact-of-heroku">The impact of Heroku</a></li>
+    <li><a href="#software-business-does-not-have-zero-marginal-variable-cost">Software business does not have zero marginal variable cost</a></li>
+    <li><a href="#hosting-companies-are-not-even-software-companies">Hosting companies are not even software companies</a></li>
+    <li><a href="#who-pays-for-the-free-accounts">Who pays for the free accounts</a></li>
+    <li><a href="#you-cant-grow-a-hosting-business-without-free-accounts">You can&rsquo;t grow a hosting business without free accounts</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2023-2023
+                <a href="https://anyfactor.github.io/">Anyfactor</a>
+                 | <a href="https://anyfactor.xyz">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>

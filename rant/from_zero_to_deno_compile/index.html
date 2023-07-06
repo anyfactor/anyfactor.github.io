@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.115.0">
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>From zero to `deno compile` then back to zero - Anyfactor&#39;s blog</title>
+
+
+<meta name="author" content="Anyfactor" />
+
+
+<meta name="description" content="Creating SBEWZDW or Singlefile Binary Executables With Zero Dependency for Windows" />
+
+
+<meta name="keywords" content="programming, rant" />
+
+
+<meta property="og:title" content="From zero to `deno compile` then back to zero" />
+<meta name="twitter:title" content="From zero to `deno compile` then back to zero" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anyfactor.github.io/rant/from_zero_to_deno_compile/" /><meta property="og:description" content="Creating SBEWZDW or Singlefile Binary Executables With Zero Dependency for Windows" />
+<meta name="twitter:description" content="Creating SBEWZDW or Singlefile Binary Executables With Zero Dependency for Windows" /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2023-07-04T02:13:59+06:00" /><meta property="article:modified_time" content="2023-07-04T02:13:59+06:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://anyfactor.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+<script data-goatcounter="https://kjm2vyyxuufb.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://anyfactor.github.io/">Anyfactor&#39;s blog</a>
+            
+            <span class="title-sub">Data &#43; Product &#43; Solution</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://anyfactor.github.io/rant/from_zero_to_deno_compile/">From zero to `deno compile` then back to zero</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-07-04</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;634 words</span>
+<span><i class="iconfont icon-time-sharp"></i>&nbsp;3 minutes</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/programming">programming</a>&nbsp;<a href="/tags/rant">rant</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>Do I still hate Javascript? And yes, Deno is still Javascript don&rsquo;t let anyone fool ya.</p>
+<p><img class="img-zoomable" src="/static/deno_1.png" alt="I dont care about edge" />
+</p>
+<p>&hellip; I just need zero dependency binary executables. So, let&rsquo;s mistake ourselves to create a Hello World binary executable for Windows with 🌈 Deno 🌈.</p>
+<p>I am just following the basic getting started stuff from the Deno site. Don&rsquo;t expect to learn something new here.</p>
+<h2 id="with-high-hopes-i-begin">With high hopes I begin&hellip;.</h2>
+<p>🔗 <a href="https://deno.land/manual@v1.34.3/getting_started/installation" target="_blank">https://deno.land/manual@v1.34.3/getting_started/installation</a></p>
+<p>Using Windows 10 here. So, will install with <code>chocolatey</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>choco install deno
+</span></span></code></pre></div><blockquote>
+<p>By the way, Deno using Docker is super easy to use as well: <a href="https://github.com/denoland/deno_docker#run-locally" target="_blank">https://github.com/denoland/deno_docker#run-locally</a></p>
+</blockquote>
+<p>After installtion, <a href="https://deno.land/manual@v1.34.3/getting_started/first_steps" target="_blank">first step</a>:</p>
+<p>Created a file:</p>
+<blockquote>
+<p>first_steps.ts</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Welcome to Deno!&#34;</span>);
+</span></span></code></pre></div><p>Then I ran it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>deno run .<span style="color:#ae81ff">\f</span>irst_steps.ts
+</span></span></code></pre></div><p>And it works. 🌈</p>
+<p>Now, does it work with <code>deno compile</code>? Yes, yes it does. The <code>exe</code> file size is only <strong>75 megabyte</strong>&hellip;. SEVENTY FIVE MEGABYTES! And there goes this entire experiment. :/</p>
+<h2 id="okay-lets-try-this-experiment-with-nim">Okay let&rsquo;s try this &ldquo;experiment&rdquo; with Nim</h2>
+<p>&hellip;the best ever programming language that nobody uses.</p>
+<p>Using Chocolatey again because adding stuff to PATH on Windows is annoying.</p>
+<p>🔗 <a href="https://community.chocolatey.org/packages/nim" target="_blank">https://community.chocolatey.org/packages/nim</a></p>
+<p>This install <code>MINGW</code>. I should have started this experiment with a Docker Ubuntu container&hellip;.. But we are in too deep now.</p>
+<p>So, compiling this stupid helloworld program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nim" data-lang="nim"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello World!&#34;</span>
+</span></span></code></pre></div><p>With:</p>
+<pre tabindex="0"><code>nim c -r helloworld.nim
+</code></pre><p>And guess the size. It is only, 175 KB! Geez! And it works on Windows as is! What kind of magic is this!!</p>
+<h2 id="but-nobody-even-heard-of-nim-everyone-uses-go">But nobody even heard of Nim. Everyone uses Go</h2>
+<p>Okay time for Go. Using chocolatey.</p>
+<p>With Go I have start with creating a Module first. That deducts one point already. With Nim you don&rsquo;t need that.</p>
+<pre tabindex="0"><code>go mod init example/hello
+</code></pre><p>Then, stupid <code>hello.go</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then building that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go build .
+</span></span></code></pre></div><p>The executable is about 2 MB. So still behind Nim.</p>
+<h2 id="and-finally-freaking-rust">And finally freaking, Rust</h2>
+<p>&hellip;because all the cool kids use it!</p>
+<p>We are going to <em>not</em> use Chocolatey this time. Rust has it&rsquo;s own weird installation <del>ritual</del> process on Windows. Because you need Visual Studio to download some C compiler or something.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Building the binary:</p>
+<pre tabindex="0"><code>rustc hello.rs
+</code></pre><p>And the executable&rsquo;s size is 159 KB.</p>
+<h2 id="then-finally-python">Then finally Python</h2>
+<p>&hellip; because why not? Using Pyinstaller here.</p>
+<p>🔗 <a href="https://pyinstaller.org/en/stable/usage.html" target="_blank">https://pyinstaller.org/en/stable/usage.html</a></p>
+<pre tabindex="0"><code class="language-print" data-lang="print">print(&#34;How is this thing still going?&#34;)
+</code></pre><p>Build command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pyinstaller .<span style="color:#ae81ff">\g</span>oodbye.py
+</span></span></code></pre></div><p>Ahhhh&hellip;. where is the executable. There is a bunch of files on two directories. The goal is to create single file zero dependency executable not this mess.</p>
+<p>Let&rsquo;s try with <code>--onefile</code>:</p>
+<pre tabindex="0"><code>pyinstaller --onefile .\goodbye.py
+</code></pre><p>Now, we have what we needed. The executable size is 6.7 MB which is:</p>
+<p><img class="img-zoomable" src="/static/deno_2.png" alt="stupid meme about Python being not great" />
+</p>
+<h2 id="tldr">TLDR</h2>
+<p>Not using Deno, duh. So, the stats for Singlefile Binary Executables With Zero Dependency for Windows or as I like to call it, SBEWZDW</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Language</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🦀</td>
+<td>Rust</td>
+<td>159 KB</td>
+</tr>
+<tr>
+<td>👑</td>
+<td>Nim</td>
+<td>175 KB</td>
+</tr>
+<tr>
+<td>🐀</td>
+<td>Go</td>
+<td>1,925 KB</td>
+</tr>
+<tr>
+<td>🐍</td>
+<td>Python (With Pyinstaller)</td>
+<td>6,784 KB</td>
+</tr>
+<tr>
+<td>🐱‍🐉</td>
+<td>Deno</td>
+<td>75,099 KB</td>
+</tr>
+</tbody>
+</table>
+<p>Even though you can say, Deno isn&rsquo;t made to for making SBEWZDW. But having a native <code>compile</code> command says something else. Python doesn&rsquo;t have anything, even with non-built-in library it was able to create an executable with a smaller footprint. So, I am skipping Deno for now.</p>
+<hr>
+<h2 id="followup-rust-executable-file-size">Followup: Rust executable file size</h2>
+<p>Commands I ran to build the executable:</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rustc main.rs</code></td>
+<td>159 KB</td>
+</tr>
+<tr>
+<td><code>cargo build --release</code></td>
+<td>156 KB</td>
+</tr>
+<tr>
+<td><code>rustc -C debuginfo=0 -C opt-level=3</code></td>
+<td>156 KB</td>
+</tr>
+</tbody>
+</table>
+<p>Version info:</p>
+<ul>
+<li>RustC version: rustc 1.70.0 (90c541806 2023-05-31)</li>
+<li>Cargo version:  cargo 1.70.0 (ec8a8a0ca 2023-04-25)</li>
+</ul>
+<p>I am using Windows 10. I installed Rust with Rustup and Visual Studio C++ distribution.</p>
+<p>My code, standard boilerplate created with <code>cargo new</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I decompiled the executable using this site: <a href="https://dogbolt.org/" target="_blank">https://dogbolt.org/</a>. The Hex-Rays version ran for me but not the other ones.</p>
+<p>Here is the C++ code if you want to check it out:</p>
+<p><a href="https://gist.github.com/anyfactor/5ad2fd078c4ad6a9e49783cf6aed33c8" target="_blank">https://gist.github.com/anyfactor/5ad2fd078c4ad6a9e49783cf6aed33c8</a></p>
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#with-high-hopes-i-begin">With high hopes I begin&hellip;.</a></li>
+    <li><a href="#okay-lets-try-this-experiment-with-nim">Okay let&rsquo;s try this &ldquo;experiment&rdquo; with Nim</a></li>
+    <li><a href="#but-nobody-even-heard-of-nim-everyone-uses-go">But nobody even heard of Nim. Everyone uses Go</a></li>
+    <li><a href="#and-finally-freaking-rust">And finally freaking, Rust</a></li>
+    <li><a href="#then-finally-python">Then finally Python</a></li>
+    <li><a href="#tldr">TLDR</a></li>
+    <li><a href="#followup-rust-executable-file-size">Followup: Rust executable file size</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2023-2023
+                <a href="https://anyfactor.github.io/">Anyfactor</a>
+                 | <a href="https://anyfactor.xyz">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
