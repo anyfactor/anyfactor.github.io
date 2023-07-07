@@ -6,13 +6,22 @@
     <description>Recent content on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Jul 2023 02:48:38 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jul 2023 03:25:27 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning with ChatGPT: a &#39;Hello World&#39; executable in Nim, Go and Rust</title>
+      <link>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</link>
+      <pubDate>Sat, 08 Jul 2023 03:25:27 +0600</pubDate>
+      
+      <guid>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</guid>
+      <description>&lt;p&gt;The big 3 cool languages for making binary executables. Learning in the wrong way with ChatGPT.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>&#39;Just use HTML&#43;CSS, dummy&#39; - Dummy</title>
-      <link>https://anyfactor.github.io/rant/just_use_html_dummy_dummy/</link>
+      <link>https://anyfactor.github.io/posts/just_use_html_dummy_dummy/</link>
       <pubDate>Wed, 05 Jul 2023 02:48:38 +0600</pubDate>
       
-      <guid>https://anyfactor.github.io/rant/just_use_html_dummy_dummy/</guid>
+      <guid>https://anyfactor.github.io/posts/just_use_html_dummy_dummy/</guid>
       <description>&lt;p&gt;Minimalism for the sake of minimalism is an agenda.&lt;/p&gt;</description>
     </item>
     
@@ -27,10 +36,10 @@
     
     <item>
       <title>From zero to `deno compile` then back to zero</title>
-      <link>https://anyfactor.github.io/rant/from_zero_to_deno_compile/</link>
+      <link>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</link>
       <pubDate>Tue, 04 Jul 2023 02:13:59 +0600</pubDate>
       
-      <guid>https://anyfactor.github.io/rant/from_zero_to_deno_compile/</guid>
+      <guid>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</guid>
       <description>&lt;p&gt;Do I still hate Javascript? And yes, Deno is still Javascript don&amp;rsquo;t let anyone fool ya.&lt;/p&gt;</description>
     </item>
     
@@ -41,18 +50,18 @@
       
       <guid>https://anyfactor.github.io/about/</guid>
       <description>I am a DevRel at a data company. I am very happy with my full time job.
-&amp;hellip;but I moonlight as a freelance Python developer specializing in product and feature development that focuses on data, automation and API development.
-I am a self taught programmer. I started freelancing in 2016 with a focus in automation developement in Python (web scraping and workflow/process automation). Then I slowly moved in product and feature developement/hacking with focus on data engineering.
-I love to solve problems with programming. I enjoy programming and I am great at at explaining technical things in layperson terms. I spend my weekends programming either for clients or for myself.</description>
+&amp;hellip;but I moonlight as a freelance Python developer specializing in product and feature development that focuses on data, automation and API development. You can find more info here: https://anyfactor.xyz
+I love to solve problems with programming. I enjoy programming and I am great at at explaining technical things in layperson terms. I spend my weekends mostly indiehacking or programming either for clients or for myself.
+I am open to Business + Programming &amp;lsquo;hybrid&amp;rsquo; roles in super part time projects. &amp;lt; 20 Hours / Week including weekends.</description>
     </item>
     
     <item>
       <title>Do modern hosting services have a sustainable business model?</title>
-      <link>https://anyfactor.github.io/rant/do_modern_hosting_services_have_a_sustainable_business_model/</link>
+      <link>https://anyfactor.github.io/posts/do_modern_hosting_services_have_a_sustainable_business_model/</link>
       <pubDate>Sun, 02 Jul 2023 14:28:13 +0600</pubDate>
       
-      <guid>https://anyfactor.github.io/rant/do_modern_hosting_services_have_a_sustainable_business_model/</guid>
-      <description>&lt;p&gt;There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why there are free hosting services?&lt;/p&gt;</description>
+      <guid>https://anyfactor.github.io/posts/do_modern_hosting_services_have_a_sustainable_business_model/</guid>
+      <description>&lt;p&gt;There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why are there free hosting services?&lt;/p&gt;</description>
     </item>
     
     <item>

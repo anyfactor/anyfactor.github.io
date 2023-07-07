@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://anyfactor.github.io/rant/just_use_html_dummy_dummy/</loc>
-    <lastmod>2023-07-05T02:48:38+06:00</lastmod>
-  </url><url>
     <loc>https://anyfactor.github.io/</loc>
+    <lastmod>2023-07-08T03:25:27+06:00</lastmod>
+  </url><url>
+    <loc>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</loc>
+    <lastmod>2023-07-08T03:25:27+06:00</lastmod>
+  </url><url>
+    <loc>https://anyfactor.github.io/posts/</loc>
+    <lastmod>2023-07-08T03:25:27+06:00</lastmod>
+  </url><url>
+    <loc>https://anyfactor.github.io/tags/programming/</loc>
+    <lastmod>2023-07-08T03:25:27+06:00</lastmod>
+  </url><url>
+    <loc>https://anyfactor.github.io/tags/</loc>
+    <lastmod>2023-07-08T03:25:27+06:00</lastmod>
+  </url><url>
+    <loc>https://anyfactor.github.io/posts/just_use_html_dummy_dummy/</loc>
     <lastmod>2023-07-05T02:48:38+06:00</lastmod>
   </url><url>
     <loc>https://anyfactor.github.io/tags/rant/</loc>
-    <lastmod>2023-07-05T02:48:38+06:00</lastmod>
-  </url><url>
-    <loc>https://anyfactor.github.io/rant/</loc>
-    <lastmod>2023-07-05T02:48:38+06:00</lastmod>
-  </url><url>
-    <loc>https://anyfactor.github.io/tags/</loc>
     <lastmod>2023-07-05T02:48:38+06:00</lastmod>
   </url><url>
     <loc>https://anyfactor.github.io/tags/business/</loc>
@@ -23,19 +29,13 @@
     <loc>https://anyfactor.github.io/posts/business_programming_hybrid/</loc>
     <lastmod>2023-07-04T23:12:53+06:00</lastmod>
   </url><url>
-    <loc>https://anyfactor.github.io/posts/</loc>
-    <lastmod>2023-07-04T23:12:53+06:00</lastmod>
-  </url><url>
-    <loc>https://anyfactor.github.io/rant/from_zero_to_deno_compile/</loc>
-    <lastmod>2023-07-04T02:13:59+06:00</lastmod>
-  </url><url>
-    <loc>https://anyfactor.github.io/tags/programming/</loc>
+    <loc>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</loc>
     <lastmod>2023-07-04T02:13:59+06:00</lastmod>
   </url><url>
     <loc>https://anyfactor.github.io/about/</loc>
     <lastmod>2023-07-03T19:15:32+08:00</lastmod>
   </url><url>
-    <loc>https://anyfactor.github.io/rant/do_modern_hosting_services_have_a_sustainable_business_model/</loc>
+    <loc>https://anyfactor.github.io/posts/do_modern_hosting_services_have_a_sustainable_business_model/</loc>
     <lastmod>2023-07-02T14:28:13+06:00</lastmod>
   </url><url>
     <loc>https://anyfactor.github.io/tags/hugo/</loc>
