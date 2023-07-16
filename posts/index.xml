@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Jul 2023 03:25:27 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jul 2023 19:03:21 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIYing a grammar checker with ChatGPT, Powershell and Autohotkey</title>
+      <link>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</link>
+      <pubDate>Sun, 16 Jul 2023 19:03:21 +0600</pubDate>
+      
+      <guid>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</guid>
+      <description>&lt;p&gt;Because Grammarly is just terrible even the pro version.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Learning with ChatGPT: a &#39;Hello World&#39; executable in Nim, Go and Rust</title>
       <link>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</link>

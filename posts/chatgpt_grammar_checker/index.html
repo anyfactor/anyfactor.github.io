@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.115.0">
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>DIYing a grammar checker with ChatGPT, Powershell and Autohotkey - Anyfactor&#39;s blog</title>
+
+
+<meta name="author" content="Anyfactor" />
+
+
+<meta name="description" content="Building my own and better version of Grammarly with ChatGPT with Autohotkey and PowerShell hacks." />
+
+
+<meta name="keywords" content="programming, chatgpt" />
+
+
+<meta property="og:title" content="DIYing a grammar checker with ChatGPT, Powershell and Autohotkey" />
+<meta name="twitter:title" content="DIYing a grammar checker with ChatGPT, Powershell and Autohotkey" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anyfactor.github.io/posts/chatgpt_grammar_checker/" /><meta property="og:description" content="Building my own and better version of Grammarly with ChatGPT with Autohotkey and PowerShell hacks." />
+<meta name="twitter:description" content="Building my own and better version of Grammarly with ChatGPT with Autohotkey and PowerShell hacks." /><meta name="twitter:card" content="summary" /><meta property="article:published_time" content="2023-07-16T19:03:21+06:00" /><meta property="article:modified_time" content="2023-07-16T19:03:21+06:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://anyfactor.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+<script data-goatcounter="https://kjm2vyyxuufb.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://anyfactor.github.io/">Anyfactor&#39;s blog</a>
+            
+            <span class="title-sub">Data &#43; Product &#43; Solution</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://anyfactor.github.io/posts/chatgpt_grammar_checker/">DIYing a grammar checker with ChatGPT, Powershell and Autohotkey</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-07-16</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;733 words</span>
+<span><i class="iconfont icon-time-sharp"></i>&nbsp;4 minutes</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/programming">programming</a>&nbsp;<a href="/tags/chatgpt">chatgpt</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>Because Grammarly is just terrible even the pro version.</p>
+<p><img class="img-zoomable" src="/static/Chatgpt_text_checker_1.png" alt="DIYing a grammar checker with ChatGPT, Powershell and Autohotkey" />
+</p>
+<p>My grammar is horrible. Well, not horrible just lazy, to be honest. I just tend to forget about writing small syllable words from time to time, like &rsquo;to&rsquo;, &lsquo;on&rsquo;, &rsquo;the&rsquo; etc. If English is your second language, you know what I am talking about. In my head, I can phrase things correctly, but when I am writing, I tend to write in keywords, if that makes any sense.</p>
+<p>The plan is to replicate the Grammarly experience to some extent. Grammarly checks writing in real time. Implementing this feature is almost impossible for me, and fortunately, I find it distracting. I just find Grammarly to be distracting with their forced positivity expressions and lacking in quality compared to ChatGPT. PERIOD. Therefore, the plan is to:&quot;</p>
+<ul>
+<li>Select a section of text</li>
+<li>Press a button</li>
+<li>Get ChatGPT to fix it</li>
+<li>Copy the correct text</li>
+<li>And at the end of it tell me what went wrong</li>
+</ul>
+<h2 id="autohotkey-script">Autohotkey script</h2>
+<p>Code first</p>
+<pre tabindex="0"><code class="language-autohotkey" data-lang="autohotkey">F8::{
+    input_prompt := A_Clipboard
+    A_Clipboard := &#34;&#34;  ; Start off empty to allow ClipWait to detect when the text has arrived.
+    Send &#34;^c&#34;
+    ClipWait  ; Wait for the clipboard to contain text.
+
+    TrayTip &#34;Grammar Check Triggered&#34;, &#34;Grammar check command recieved please wait...&#34;
+    Sleep 3000   ; Let it display for 3 seconds.
+    HideTrayTip
+
+    RunWait A_ComSpec &#39; /c cd &#34;C:\Users\Abdullah\Documents\Projects_started_22_November_2021\Project Folder 211122\Hobby Project\chatgpt_grammar_check_automation\&#34; &amp; powershell.exe .\test.ps1&#39;
+    MsgBox input_prompt &#34;`n&#34;`n&#34;&#34; A_Clipboard
+
+    ; Copy this function into your script to use it.
+    HideTrayTip() {
+        TrayTip  ; Attempt to hide it the normal way.
+        if SubStr(A_OSVersion,1,3) = &#34;10.&#34; {
+            A_IconHidden := true
+            Sleep 200  ; It may be necessary to adjust this sleep.
+            A_IconHidden := false
+        }
+    }
+}
+</code></pre><p>Breakdown:</p>
+<ul>
+<li><code>A_Clipboard</code> ⇒ As per <a href="https://www.autohotkey.com/docs/v2/lib/A_Clipboard.htm" target="_blank">docs</a>, A_Clipboard is a built-in variable that reflects the current contents of the Windows clipboard if those contents can be expressed as text.</li>
+<li><code>RunWait A_ComSpec</code> ⇒ Runs my powershell script through commandline.</li>
+<li>Tray stuff ⇒  Just to let me know the script has been triggered. It is helpful as ChatGPT needs some to time to process and AHK sometimes just doesn&rsquo;t work. IDK why.</li>
+</ul>
+<h2 id="powershell">Powershell</h2>
+<p>Code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$clipboardContent = Get-Clipboard
+</span></span><span style="display:flex;"><span>$OPENAI_API_KEY = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>$headers = @{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Authorization&#34;</span> = <span style="color:#e6db74">&#34;Bearer </span>$OPENAI_API_KEY<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$data = @{
+</span></span><span style="display:flex;"><span>    model = <span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>
+</span></span><span style="display:flex;"><span>    messages = @(
+</span></span><span style="display:flex;"><span>        @{
+</span></span><span style="display:flex;"><span>            role = <span style="color:#e6db74">&#34;user&#34;</span>
+</span></span><span style="display:flex;"><span>            content = <span style="color:#e6db74">&#34;Fix the grammar errors and at the end list out the mistakes made:</span><span style="color:#ae81ff">`n`n</span><span style="color:#e6db74"> \&#39;{0}\&#39;&#34;</span> <span style="color:#f92672">-f</span> $clipboardContent
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the hashtable to JSON</span>
+</span></span><span style="display:flex;"><span>$body = $data | ConvertTo-Json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$response = Invoke-RestMethod <span style="color:#e6db74">&#34;https://api.openai.com/v1/chat/completions&#34;</span> `
+</span></span><span style="display:flex;"><span>    -Method Post `
+</span></span><span style="display:flex;"><span>    -Headers $headers `
+</span></span><span style="display:flex;"><span>    -ContentType <span style="color:#e6db74">&#34;application/json&#34;</span> `
+</span></span><span style="display:flex;"><span>    -Body $body
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># $jsonData = $response | ConvertTo-Json</span>
+</span></span><span style="display:flex;"><span>$jsonData = $response.choices[<span style="color:#ae81ff">0</span>].message.content
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Write-Output $jsonData
+</span></span><span style="display:flex;"><span>Set-Clipboard -Value $jsonData
+</span></span></code></pre></div><p>Breakdown:</p>
+<ul>
+<li>I initially wrote and tested the code with Python.</li>
+<li>I used ChatGPT&rsquo;s <a href="https://platform.openai.com/docs/api-reference/chat" target="_blank">documentation</a> and converted the curl command to powershell using <a href="https://curlconverter.com/powershell-webrequest/" target="_blank">this tool</a>.</li>
+<li>Then I fiddled with ChatGPT to come up with this solution.</li>
+</ul>
+<h2 id="so-how-does-it-work">So how does it work</h2>
+<p><img class="img-zoomable" src="/static/Chatgpt_text_checker_2.gif" alt="It works like this" />
+</p>
+<ul>
+<li>First, select the text and then press F8.</li>
+<li>After that, my AHK script is triggered.</li>
+<li>AHK runs ctrl+c to copy the selected text.</li>
+<li>It stores the selected text in the variable <code>input_prompt</code>.</li>
+<li>Then the PowerShell script is triggered via <code>cmd</code>.</li>
+<li>The PowerShell script takes the content from the clipboard.</li>
+<li>It then calls the ChatGPT API with the prompt: &ldquo;Fix the grammar errors and at the end list out the mistakes made: {text}&rdquo;.</li>
+<li>It then receives the results and stores them to the clipboard.</li>
+<li>In AHK, we show the input prompt and the result prompt.</li>
+<li>The clipboard contains the result prompt as well.</li>
+<li>Then just paste the grammar-corrected statement.</li>
+</ul>
+<h2 id="at-the-end-of-the-day">At the end of the day</h2>
+<ul>
+<li>I could have written only a Python script and saved myself from the hassle of dealing with PowerShell.</li>
+<li>I could have written this in Rust and made it efficient and cross-platf&hellip; who am I kidding?</li>
+<li>I&rsquo;m glad there is no async stuff.</li>
+<li>The prompt makes the result too professional, which I don&rsquo;t like.</li>
+<li>I am not planning to use this often, except for technical writing, which I do A LOT and surprisingly get paid for.</li>
+<li>You should be using a cliboard manager like <a href="https://ditto-cp.sourceforge.io/" target="_blank">Ditto</a> if you are using this.</li>
+<li>I will try to only put the &ldquo;mistakes&rdquo; section on the messagebox and not copy it. I will also remove the double quotes from the output section.</li>
+</ul>
+<p>This thing doesn&rsquo;t deserve it&rsquo;s Github Repo, but I will make one anyway.</p>
+<p><a href="https://github.com/anyfactor/Chatgpt_grammar_checker" target="_blank">https://github.com/anyfactor/Chatgpt_grammar_checker</a></p>
+<p>Anyway if you have any feedback let me know. Thanks.</p>
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#autohotkey-script">Autohotkey script</a></li>
+    <li><a href="#powershell">Powershell</a></li>
+    <li><a href="#so-how-does-it-work">So how does it work</a></li>
+    <li><a href="#at-the-end-of-the-day">At the end of the day</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About / Hire Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#autohotkey-script">Autohotkey script</a></li>
+    <li><a href="#powershell">Powershell</a></li>
+    <li><a href="#so-how-does-it-work">So how does it work</a></li>
+    <li><a href="#at-the-end-of-the-day">At the end of the day</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2023-2023
+                <a href="https://anyfactor.github.io/">Anyfactor</a>
+                 | <a href="https://anyfactor.xyz">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
