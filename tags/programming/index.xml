@@ -6,7 +6,16 @@
     <description>Recent content in programming on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Jul 2023 19:03:21 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 06:02:18 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Made a grammar checker script with ChatGPT powered by - Go and Autohotkey</title>
+      <link>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</link>
+      <pubDate>Sat, 22 Jul 2023 06:02:18 +0600</pubDate>
+      
+      <guid>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</guid>
+      <description>&lt;p&gt;Grammarly still sucks. And Go&amp;hellip;. when you don&amp;rsquo;t want to rewrite things in Rust. This is a part 2 of an another blog.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>DIYing a grammar checker with ChatGPT - Part 1</title>
       <link>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</link>

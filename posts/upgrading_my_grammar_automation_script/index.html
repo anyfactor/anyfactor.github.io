@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.115.0">
+
+
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-cdn-main@1/images/favicons/dsrca.ico" />
+
+
+
+<title>Made a grammar checker script with ChatGPT powered by - Go and Autohotkey - Anyfactor&#39;s blog</title>
+
+
+<meta name="author" content="Anyfactor" />
+
+
+<meta name="description" content="Grammarly still sucks. And Go.... when you don&#39;t want to rewrite things in Rust." />
+
+
+<meta name="keywords" content="programming, chatgpt" />
+
+
+<meta property="og:title" content="Made a grammar checker script with ChatGPT powered by - Go and Autohotkey" />
+<meta name="twitter:title" content="Made a grammar checker script with ChatGPT powered by - Go and Autohotkey" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/" /><meta property="og:description" content="Grammarly still sucks. And Go.... when you don&#39;t want to rewrite things in Rust." />
+<meta name="twitter:description" content="Grammarly still sucks. And Go.... when you don&#39;t want to rewrite things in Rust." /><meta property="og:image" content="https://anyfactor.github.io/static/Upgrading_my_grammar_automation_script_4.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://anyfactor.github.io/static/Upgrading_my_grammar_automation_script_4.png" /><meta property="article:published_time" content="2023-07-22T06:02:18+06:00" /><meta property="article:modified_time" content="2023-07-22T06:02:18+06:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://anyfactor.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+<script data-goatcounter="https://kjm2vyyxuufb.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://anyfactor.github.io/">Anyfactor&#39;s blog</a>
+            
+            <span class="title-sub">Data &#43; Product &#43; Solution</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/">Made a grammar checker script with ChatGPT powered by - Go and Autohotkey</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-07-22</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;964 words</span>
+<span><i class="iconfont icon-time-sharp"></i>&nbsp;5 minutes</span>
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/programming">programming</a>&nbsp;<a href="/tags/chatgpt">chatgpt</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <p>Grammarly still sucks. And Go&hellip;. when you don&rsquo;t want to rewrite things in Rust. This is a part 2 of an another blog.</p>
+<p><img class="img-zoomable" src="/static/Upgrading_my_grammar_automation_script_4.png" alt="goroutines looks easy" />
+</p>
+<p>Continuing from the <a href="%28https://anyfactor.github.io/posts/chatgpt_grammar_checker/%29">last part</a> where I created this using mostly PowerShell.</p>
+<h2 id="what-changed">What changed?</h2>
+<p>The PowerShell script was bad:</p>
+<ul>
+<li>It was unreadable to me atleast.</li>
+<li>The JSON parsing was unnecessarily verbose.</li>
+<li>I actually need async support.</li>
+<li>Setting content in clipboard was a hit or miss.</li>
+</ul>
+<p>The AHK script was bad:</p>
+<ul>
+<li>I actually need some kind of async support.</li>
+<li>I don&rsquo;t need the <code>msgbox</code> alert system because when running the operation through <code>cmd</code>, the terminal pops up anyway.</li>
+<li>It was copying the corrections made <code>Corrections Made</code> section which was annoying.</li>
+</ul>
+<h2 id="current-state-of-the-script">Current state of the script</h2>
+<p><img class="img-zoomable" src="/static/Upgrading_my_grammar_automation_script_3.gif" alt="Grammarcheck with go&#43;ahk" />
+</p>
+<h3 id="autohotkey">Autohotkey</h3>
+<pre tabindex="0"><code class="language-Autohotkey" data-lang="Autohotkey">
+F8::{
+  ;copies the content from current selection
+  A_Clipboard := &#34;&#34;  ; Start off empty to allow ClipWait to detect when the text has arrived.
+  Send &#34;^c&#34;
+  ClipWait  ; Wait for the clipboard to contain text.
+
+  ; async operation via threading of some sort
+  ; https://www.reddit.com/r/AutoHotkey/comments/mqbyfz/can_i_have_multiple_functionsactions_running_at/
+  SetTimer trayalert, -1, 1
+  SetTimer core_grammar_operation, -1, 1
+  return
+
+  core_grammar_operation(){
+    ; runs the go project
+    RunWait A_ComSpec &#39; /c &#34;&lt;path_to_file_main.exe&gt;&#34;&#39;
+
+    ; delay before content is posted.
+    Sleep 800
+    Send &#34;^v&#34;
+  }
+
+  trayalert(){
+    ; tray alert for script being copied
+    input_prompt := A_Clipboard
+    TrayTip &#34;Grammar Check Triggered&#34;, input_prompt
+    Sleep 4000   ; Let it display for 3 seconds.
+    HideTrayTip
+  }    
+  HideTrayTip() {
+    ; tray alert helper function to hide the tray
+    TrayTip  ; Attempt to hide it the normal way.
+    if SubStr(A_OSVersion,1,3) = &#34;10.&#34; {
+      A_IconHidden := true
+      Sleep 200  ; It may be necessary to adjust this sleep.
+      A_IconHidden := false
+    }
+  }
+}
+</code></pre><p>Breakdown:</p>
+<ul>
+<li>I opted to remove the <code>msgbox</code> for showing the grammar correction because it wasn&rsquo;t needed. The <code>cmd</code> section triggered the terminal where I can show the grammar correction bit from go.</li>
+<li>I implemented a threading operation for running the go code and triggering the trayalert simultaneously. I have no clue how threading/async in AHK, I just winged it.</li>
+<li>It pastes only the corrected sections from the clipboard.</li>
+</ul>
+<h3 id="go">Go</h3>
+<p>First of all, the Go script is amazing! However, if you have any optimization advice, it would be greatly appreciated. I wrote the script entirely using ChatGPT prompts. This script looks long, but it is kidna self explantory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;encoding/json&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/atotto/clipboard&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">text</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">clipboard</span>.<span style="color:#a6e22e">WriteAll</span>(<span style="color:#a6e22e">text</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error copying text to clipboard:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">text</span>, <span style="color:#a6e22e">stoppingPointText</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">splitText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">text</span>, <span style="color:#a6e22e">stoppingPointText</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">splitText</span>) &gt; <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">result</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">TrimSpace</span>(<span style="color:#a6e22e">splitText</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">result</span> = <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">result</span>, <span style="color:#e6db74">&#34;\&#34;&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">token</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">clipboard_content</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">clipboard</span>.<span style="color:#a6e22e">ReadAll</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error reading clipboard:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Clipboard content:\n\n&#34;</span>, <span style="color:#a6e22e">clipboard_content</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">headers</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Content-Type&#34;</span>:  <span style="color:#e6db74">&#34;application/json&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Authorization&#34;</span>: <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">token</span>,
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">jsonData</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;model&#34;</span>: <span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;messages&#34;</span>: []<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>{
+</span></span><span style="display:flex;"><span>			{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: <span style="color:#e6db74">&#34;Fix the grammar errors and at the end list out the mistakes made:\n\n &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">clipboard_content</span>},
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">jsonValue</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">jsonData</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">NewRequest</span>(<span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;https://api.openai.com/v1/chat/completions&#34;</span>, <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">NewReader</span>(string(<span style="color:#a6e22e">jsonValue</span>)))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error creating HTTP request:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">headers</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">req</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error making HTTP request:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">responseData</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">Body</span>).<span style="color:#a6e22e">Decode</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">responseData</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error decoding JSON response:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">choices</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">responseData</span>[<span style="color:#e6db74">&#34;choices&#34;</span>].([]<span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">firstChoice</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">choices</span>[<span style="color:#ae81ff">0</span>].(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">message</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">firstChoice</span>[<span style="color:#e6db74">&#34;message&#34;</span>].(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{})
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">content</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">message</span>[<span style="color:#e6db74">&#34;content&#34;</span>].(<span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\nExtracted content:&#34;</span>, <span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\nExtracted content:&#34;</span>, <span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Text mismatch&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\n&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">content</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">exit_statement</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Scanln</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">exit_statement</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">exit_statement</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Breakdown:</p>
+<ul>
+<li>Retrieves the incorrect section from the clipboard.</li>
+<li>Makes an API call to ChatGPT.</li>
+<li>Displays the response from the API call.</li>
+<li>Extracts the corrected version from the API response and removes the &ldquo;Mistakes made&rdquo; section.</li>
+<li>Copies the extracted correct section to the clipboard.</li>
+</ul>
+<p>One thing I don&rsquo;t like:</p>
+<p>I would have preferred to write this section:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\nExtracted content:&#34;</span>, <span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\nExtracted content:&#34;</span>, <span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Text mismatch&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes made:&#34;</span>)
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extractedText</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">extract_text</span>(<span style="color:#a6e22e">content</span>, <span style="color:#e6db74">&#34;Mistakes:&#34;</span>)
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Text mismatch&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copy_to_clipboard</span>(<span style="color:#a6e22e">extractedText</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\n\nExtracted content:&#34;</span>, <span style="color:#a6e22e">extractedText</span>)
+</span></span></code></pre></div><p>But I am getting <code>unused variable</code> error, which is fine, I guess. But, I kinda want to ditch my variables this way sometimes, because I write mostly Python code.</p>
+<h2 id="why-not-rust">Why not Rust?</h2>
+<p>I tried Rust for this project, but it was quite painful. ChatGPT support for generating good Rust code needs work. And trust me when I say this, I don&rsquo;t know how to write Go code. But I was able to cobble up something, didn&rsquo;t I? But I don&rsquo;t have that confidence to debug ChatGPT generated Rust code.</p>
+<p><img class="img-zoomable" src="/static/Upgrading_my_grammar_automation_script_2.png" alt="Go is uncool but it works" />
+</p>
+<p>Writing async code is challenging. I encountered a couple of bugs while working with the clipboard, and I feel like Rust is overly statically typed for scripting. Go is not cool, but it works. I would like to use <code>goroutines</code> for some section of the code.</p>
+<p><img class="img-zoomable" src="/static/Upgrading_my_grammar_automation_script_1.png" alt="goroutines looks easy" />
+</p>
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>Simple quality of life improvements include exiting the terminal prompt if the user doesn&rsquo;t press enter within a certain period.</li>
+<li>Display a meme or joke on the tray alert while the script runs in the background. Since we are making an API call, every second feels like an eternity. So need something look at.</li>
+<li>I don&rsquo;t think I can optimize it further, as the bottleneck is in the API call. But if you have any advice, feel free to let me know.</li>
+</ul>
+    </div>
+</article>
+
+
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+            <li>
+                <a href="https://lobste.rs/u/anyfactor" target="_blank"><span>Lobsters</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-changed">What changed?</a></li>
+    <li><a href="#current-state-of-the-script">Current state of the script</a>
+      <ul>
+        <li><a href="#autohotkey">Autohotkey</a></li>
+        <li><a href="#go">Go</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-not-rust">Why not Rust?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About Me</a>
+            </li>
+            
+            <li>
+                <a href="/search/">Search</a>
+            </li>
+            
+            <li>
+                <a href="/index.xml">RSS</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://news.ycombinator.com/user?id=anyfactor" target="_blank"><span>Hackernews</span></a>
+            </li>
+            
+            <li>
+                <a href="https://twitter.com/anyfactor" target="_blank"><span>Twitter</span></a>
+            </li>
+            
+            <li>
+                <a href="https://old.reddit.com/u/anyfactor" target="_blank"><span>Reddit</span></a>
+            </li>
+            
+            <li>
+                <a href="https://lobste.rs/u/anyfactor" target="_blank"><span>Lobsters</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/business/">business</a>
+            </span>
+            
+            <span>
+                <a href="/tags/chatgpt/">chatgpt</a>
+            </span>
+            
+            <span>
+                <a href="/tags/hugo/">hugo</a>
+            </span>
+            
+            <span>
+                <a href="/tags/programming/">programming</a>
+            </span>
+            
+            <span>
+                <a href="/tags/rant/">rant</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class="sidebar-item sidebar-toc">
+        <h3>Table of Contents</h3>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-changed">What changed?</a></li>
+    <li><a href="#current-state-of-the-script">Current state of the script</a>
+      <ul>
+        <li><a href="#autohotkey">Autohotkey</a></li>
+        <li><a href="#go">Go</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-not-rust">Why not Rust?</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2023-2023
+                <a href="https://anyfactor.github.io/">Anyfactor</a>
+                 | <a href="https://anyfactor.xyz">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
