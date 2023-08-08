@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jul 2023 06:02:18 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 07:17:04 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On corporate memes</title>
+      <link>https://anyfactor.github.io/posts/on_corporate_memes/</link>
+      <pubDate>Tue, 08 Aug 2023 07:17:04 +0600</pubDate>
+      
+      <guid>https://anyfactor.github.io/posts/on_corporate_memes/</guid>
+      <description>&lt;p&gt;Corporate memes are either not funny or can&amp;rsquo;t risk offending someone&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Made a grammar checker script with ChatGPT powered by - Go and Autohotkey</title>
       <link>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</link>
