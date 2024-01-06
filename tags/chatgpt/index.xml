@@ -6,33 +6,28 @@
     <description>Recent content in chatgpt on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jul 2023 06:02:18 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 06:02:18 +0600</lastBuildDate>
+    <atom:link href="https://anyfactor.github.io/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Made a grammar checker script with ChatGPT powered by - Go and Autohotkey</title>
       <link>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</link>
       <pubDate>Sat, 22 Jul 2023 06:02:18 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</guid>
       <description>&lt;p&gt;Grammarly still sucks. And Go&amp;hellip;. when you don&amp;rsquo;t want to rewrite things in Rust. This is a part 2 of an another blog.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DIYing a grammar checker with ChatGPT - Part 1</title>
       <link>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</link>
       <pubDate>Sun, 16 Jul 2023 19:03:21 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</guid>
       <description>&lt;p&gt;Because Grammarly is just terrible even the pro version. Toolstack - Powershell and Autohotkey.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Powershell script for Hugo Git deployment</title>
       <link>https://anyfactor.github.io/posts/powershell_script_for_git_deployment/</link>
       <pubDate>Sun, 02 Jul 2023 00:33:01 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/powershell_script_for_git_deployment/</guid>
       <description>&lt;p&gt;Using ChatGPT I created a simple powershell script for deploying the site.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

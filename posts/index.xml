@@ -6,123 +6,105 @@
     <description>Recent content in Posts on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Aug 2023 17:11:14 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jan 2024 11:13:01 +0600</lastBuildDate>
+    <atom:link href="https://anyfactor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shitty mgmt checklist: Open ended</title>
+      <link>https://anyfactor.github.io/posts/open_ended_review_feedbacks_are_shit/</link>
+      <pubDate>Sat, 06 Jan 2024 11:13:01 +0600</pubDate>
+      <guid>https://anyfactor.github.io/posts/open_ended_review_feedbacks_are_shit/</guid>
+      <description>&lt;p&gt;Anything that is too open ended is generally a bad feedback.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ragebuilding a startup to success</title>
       <link>https://anyfactor.github.io/posts/ragebuilding_startup/</link>
       <pubDate>Thu, 31 Aug 2023 17:11:14 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/ragebuilding_startup/</guid>
       <description>&lt;p&gt;Rage-building a startup to success is a thing and it is undoubtedly the best and most guranteed way to start building.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Becoming a startup millionaire</title>
       <link>https://anyfactor.github.io/posts/becoming_startup_millionaire/</link>
       <pubDate>Thu, 31 Aug 2023 01:54:07 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/becoming_startup_millionaire/</guid>
       <description>&lt;p&gt;The successful exit startup rulebook. Creating a startup based on a feature of a big software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>On corporate memes</title>
       <link>https://anyfactor.github.io/posts/on_corporate_memes/</link>
       <pubDate>Tue, 08 Aug 2023 07:17:04 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/on_corporate_memes/</guid>
       <description>&lt;p&gt;Corporate memes are either not funny or can&amp;rsquo;t risk offending someone&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Made a grammar checker script with ChatGPT powered by - Go and Autohotkey</title>
       <link>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</link>
       <pubDate>Sat, 22 Jul 2023 06:02:18 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/upgrading_my_grammar_automation_script/</guid>
       <description>&lt;p&gt;Grammarly still sucks. And Go&amp;hellip;. when you don&amp;rsquo;t want to rewrite things in Rust. This is a part 2 of an another blog.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DIYing a grammar checker with ChatGPT - Part 1</title>
       <link>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</link>
       <pubDate>Sun, 16 Jul 2023 19:03:21 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/chatgpt_grammar_checker/</guid>
       <description>&lt;p&gt;Because Grammarly is just terrible even the pro version. Toolstack - Powershell and Autohotkey.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Learning with ChatGPT: a &#39;Hello World&#39; executable in Nim, Go and Rust</title>
       <link>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</link>
       <pubDate>Sat, 08 Jul 2023 03:25:27 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/making_a_hello_world_executable_in_3_language/</guid>
       <description>&lt;p&gt;The big 3 cool languages for making binary executables. Learning in the wrong way with ChatGPT.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>&#39;Just use HTML&#43;CSS, dummy&#39; - Dummy</title>
       <link>https://anyfactor.github.io/posts/just_use_html_dummy_dummy/</link>
       <pubDate>Wed, 05 Jul 2023 02:48:38 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/just_use_html_dummy_dummy/</guid>
       <description>&lt;p&gt;Minimalism for the sake of minimalism is an agenda.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Business programming hybrid roles: The best of both world</title>
       <link>https://anyfactor.github.io/posts/business_programming_hybrid/</link>
       <pubDate>Tue, 04 Jul 2023 23:12:53 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/business_programming_hybrid/</guid>
       <description>&lt;p&gt;Any role that has a direct business goal that doesn&amp;rsquo;t involve full time programming to build the product.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>From zero to `deno compile` then back to zero</title>
       <link>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</link>
       <pubDate>Tue, 04 Jul 2023 02:13:59 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/from_zero_to_deno_compile/</guid>
       <description>&lt;p&gt;Do I still hate Javascript? And yes, Deno is still Javascript don&amp;rsquo;t let anyone fool ya.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Do modern hosting services have a sustainable business model?</title>
       <link>https://anyfactor.github.io/posts/do_modern_hosting_services_have_a_sustainable_business_model/</link>
       <pubDate>Sun, 02 Jul 2023 14:28:13 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/do_modern_hosting_services_have_a_sustainable_business_model/</guid>
       <description>&lt;p&gt;There are no hosting company offers a VPS for free. Hosting anything on the web should atleast have some costs associated with them. But why are there free hosting services?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Improving this Hugo site</title>
       <link>https://anyfactor.github.io/posts/hugo_site_tasks/</link>
       <pubDate>Sun, 02 Jul 2023 00:52:30 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/hugo_site_tasks/</guid>
       <description>&lt;p&gt;A laundry list of things I need to do get this site up and running&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Powershell script for Hugo Git deployment</title>
       <link>https://anyfactor.github.io/posts/powershell_script_for_git_deployment/</link>
       <pubDate>Sun, 02 Jul 2023 00:33:01 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/powershell_script_for_git_deployment/</guid>
       <description>&lt;p&gt;Using ChatGPT I created a simple powershell script for deploying the site.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Setting up Hugo</title>
       <link>https://anyfactor.github.io/posts/setting_up_hugo/</link>
       <pubDate>Sat, 01 Jul 2023 23:06:13 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/posts/setting_up_hugo/</guid>
       <description>&lt;p&gt;Video summary (in bullet points) of &lt;a href=&#34;https://www.youtube.com/watch?v=LIFvgrRxdt4&#34; target=&#34;_blank&#34;&gt;Creating a Blog with Hugo and Github in 10 minutes&lt;/a&gt; by &lt;a href=&#34;https://www.youtube.com/@TheSimpleEngineer&#34; target=&#34;_blank&#34;&gt;Ryan Schachte&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

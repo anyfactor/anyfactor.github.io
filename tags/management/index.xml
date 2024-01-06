@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tweet on Anyfactor&#39;s blog</title>
-    <link>https://anyfactor.github.io/tags/tweet/</link>
-    <description>Recent content in tweet on Anyfactor&#39;s blog</description>
+    <title>management on Anyfactor&#39;s blog</title>
+    <link>https://anyfactor.github.io/tags/management/</link>
+    <description>Recent content in management on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Jan 2024 11:13:01 +0600</lastBuildDate>
-    <atom:link href="https://anyfactor.github.io/tags/tweet/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://anyfactor.github.io/tags/management/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shitty mgmt checklist: Open ended</title>
       <link>https://anyfactor.github.io/posts/open_ended_review_feedbacks_are_shit/</link>
       <pubDate>Sat, 06 Jan 2024 11:13:01 +0600</pubDate>
       <guid>https://anyfactor.github.io/posts/open_ended_review_feedbacks_are_shit/</guid>
       <description>&lt;p&gt;Anything that is too open ended is generally a bad feedback.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>On corporate memes</title>
-      <link>https://anyfactor.github.io/posts/on_corporate_memes/</link>
-      <pubDate>Tue, 08 Aug 2023 07:17:04 +0600</pubDate>
-      <guid>https://anyfactor.github.io/posts/on_corporate_memes/</guid>
-      <description>&lt;p&gt;Corporate memes are either not funny or can&amp;rsquo;t risk offending someone&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

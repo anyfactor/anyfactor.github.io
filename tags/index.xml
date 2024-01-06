@@ -6,69 +6,63 @@
     <description>Recent content in Tags on Anyfactor&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 Aug 2023 17:11:14 +0600</lastBuildDate><atom:link href="https://anyfactor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jan 2024 11:13:01 +0600</lastBuildDate>
+    <atom:link href="https://anyfactor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>management</title>
+      <link>https://anyfactor.github.io/tags/management/</link>
+      <pubDate>Sat, 06 Jan 2024 11:13:01 +0600</pubDate>
+      <guid>https://anyfactor.github.io/tags/management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tweet</title>
+      <link>https://anyfactor.github.io/tags/tweet/</link>
+      <pubDate>Sat, 06 Jan 2024 11:13:01 +0600</pubDate>
+      <guid>https://anyfactor.github.io/tags/tweet/</guid>
+      <description></description>
+    </item>
     <item>
       <title>businesss</title>
       <link>https://anyfactor.github.io/tags/businesss/</link>
       <pubDate>Thu, 31 Aug 2023 17:11:14 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/businesss/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>rant</title>
       <link>https://anyfactor.github.io/tags/rant/</link>
       <pubDate>Thu, 31 Aug 2023 01:54:07 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/rant/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>tweet</title>
-      <link>https://anyfactor.github.io/tags/tweet/</link>
-      <pubDate>Tue, 08 Aug 2023 07:17:04 +0600</pubDate>
-      
-      <guid>https://anyfactor.github.io/tags/tweet/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>chatgpt</title>
       <link>https://anyfactor.github.io/tags/chatgpt/</link>
       <pubDate>Sat, 22 Jul 2023 06:02:18 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/chatgpt/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>programming</title>
       <link>https://anyfactor.github.io/tags/programming/</link>
       <pubDate>Sat, 22 Jul 2023 06:02:18 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/programming/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>business</title>
       <link>https://anyfactor.github.io/tags/business/</link>
       <pubDate>Tue, 04 Jul 2023 23:12:53 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/business/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>hugo</title>
       <link>https://anyfactor.github.io/tags/hugo/</link>
       <pubDate>Sun, 02 Jul 2023 00:52:30 +0600</pubDate>
-      
       <guid>https://anyfactor.github.io/tags/hugo/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
